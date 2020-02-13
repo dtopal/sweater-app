@@ -14,7 +14,8 @@ class App extends React.Component {
       userInput: false,
       temp: null, //temp in K , TC = TK - 273.15, TF = TK * 9/5 - 459.67
       weather: '',
-      weatherID: null
+      weatherID: null,
+      errorLocation: false
     }
     this.handleLocChange = this.handleLocChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -37,7 +38,8 @@ class App extends React.Component {
               longitude: position.coords.longitude,
               temp: data.main.temp,
               weather: data.weather[0].main,
-              weatherID: data.weather[0].id
+              weatherID: data.weather[0].id,
+              errorLocation: false
             });
             //console.log(Math.round(data.main.temp - 273.15) + ' C');
           });
@@ -70,7 +72,12 @@ class App extends React.Component {
         return response;
       })
       .then(response => {
-        if (!response.ok) { throw response }
+        if (!response.ok) {
+          this.setState({
+            errorLocation: true
+          });
+          throw response;
+        }
 
         return response.json();
       })
@@ -83,7 +90,8 @@ class App extends React.Component {
           longitude: data.coord.lon,
           temp: data.main.temp,
           weather: data.weather[0].main,
-          weatherID: data.weather[0].id
+          weatherID: data.weather[0].id,
+          errorLocation: false
         })
       })
   }
@@ -91,7 +99,7 @@ class App extends React.Component {
   render() {
     return (
       <div id="app">
-        < Location latitude={this.state.latitude} longitude={this.state.longitude} place={this.state.placeInput} onChange={this.handleLocChange} handleSubmit={this.handleSubmit}/>
+        < Location latitude={this.state.latitude} longitude={this.state.longitude} place={this.state.placeInput} onChange={this.handleLocChange} handleSubmit={this.handleSubmit} error={this.state.errorLocation}/>
         < Display userInput={this.state.userInput} tempK={this.state.temp} weather={this.state.weather} />
       </div>
   )};

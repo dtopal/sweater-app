@@ -8,11 +8,24 @@ class Location extends React.Component {
 
 
   render() {
+
+    var visibility;
+    if (this.props.error) {
+      visibility = "visible";
+    } else {
+      visibility = "hidden";
+    }
+
     return(
       <div id="location">
-      <form onSubmit={this.props.handleSubmit}>
-        <input type="text" name="placename" placeholder="please input location" value={this.props.place} onChange={this.props.onChange} /><input type="submit" value="submit"  />
-      </form>
+      <div>
+        <form onSubmit={this.props.handleSubmit}>
+          <input type="text" name="placename" placeholder="please input location" value={this.props.place} onChange={this.props.onChange} /><input type="submit" value="submit"  />
+        </form>
+      </div>
+      <div id="error" class={visibility}>
+      <p>ERROR: location not found</p>
+      </div>
 
       </div>
     )
