@@ -5,7 +5,7 @@ A single page app to answer the question "Do I need a sweater?"
 ### API keys
 You will need a .env file with your [Open Weather](https://openweathermap.org/) api key
 
-.env
+.env<br />
 REACT_APP_WEATHER_KEY={openweathermap api key}
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
