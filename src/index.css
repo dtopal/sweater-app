@@ -13,16 +13,22 @@ body {
   //background-color: lightgreen;
   max-width: 500px;
   height: 700px;
-  //margin-top: 30px;
   margin-top: 7vh;
   margin-left: auto;
   margin-right: auto;
-  //padding: 50px;
   border-radius: 10px;
   text-align: center;
   display: flex;
   justify-content: center;
 
+}
+
+@media (max-width: 450px) {
+  #root {
+    margin-top: 0;
+    height: 100vh;
+
+  }
 }
 
 #app {

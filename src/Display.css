@@ -37,3 +37,9 @@
   justify-content: center;
   //background-color: blue;
 }
+
+@media (max-width: 450px) {
+  #weather {
+    height: 100px;
+  }
+}
