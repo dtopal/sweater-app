@@ -40,6 +40,6 @@
 
 @media (max-width: 450px) {
   #weather {
-    height: 100px;
+    height: 100%;
   }
 }
